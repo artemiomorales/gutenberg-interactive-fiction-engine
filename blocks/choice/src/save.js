@@ -16,22 +16,27 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save(props) {
+
 	const {
-		attributes: { id, choices }
+		attributes: { id, parentId, condition, choices }
 	 } = props;
 
 	return (
-		<div>
-			<InnerBlocks.Content />
-			<ul { ...useBlockProps.save() }>
-				{
-					choices.map((choice, index) =>
-						<li>
-							<a href="#" onClick={(e) => { e.preventDefault(); }} key={index}>{choice}</a>
-						</li>
-					)
-				}
-			</ul>
+		<div { ...useBlockProps.save() }>
+			<div className='ifengine__container'>
+				<div id={id} className='ifengine__choice' data-displayconditionally={ parentId !== "" ? 1 : 0} data-conditiontarget={parentId} data-conditionvalue={condition} data-activecondition="">
+					<InnerBlocks.Content />
+					<ul className='ifengine__choices-list'>
+						{
+							choices.map((choice, index) =>
+								<li>
+									<a href="#" key={index}>{choice}</a>
+								</li>
+							)
+						}
+					</ul>
+				</div>
+			</div>
 		</div>
 	);
 }

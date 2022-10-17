@@ -116,9 +116,7 @@ function Edit(props) {
     // }
   }, []);
   const callback = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useCallback)(element => {
-    console.log("calling back");
     if (!isMounted.current) {
-      console.log(element);
       dynamicChoice.current = new _lib_utils__WEBPACK_IMPORTED_MODULE_3__.DynamicParagraph(element);
       window.ifEngine.registerListener(dynamicChoice.current);
     } else {
@@ -130,6 +128,8 @@ function Edit(props) {
   });
   const updateChoice = index => {
     console.log("registering click");
+    console.log(activeCondition);
+    console.log(index);
     if (activeCondition !== index) {
       setActiveCondition(index);
       callSetActiveStatuses(index);
@@ -219,6 +219,7 @@ function Edit(props) {
     className: "ifengine__container"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     id: id,
+    className: "ifengine__choice",
     ref: callback,
     "data-displayconditionally": parentId !== "" ? 1 : 0,
     "data-conditiontarget": parentId,
@@ -331,16 +332,26 @@ function save(props) {
   const {
     attributes: {
       id,
+      parentId,
+      condition,
       choices
     }
   } = props;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(), choices.map((choice, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ifengine__container"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    id: id,
+    className: "ifengine__choice",
+    "data-displayconditionally": parentId !== "" ? 1 : 0,
+    "data-conditiontarget": parentId,
+    "data-conditionvalue": condition,
+    "data-activecondition": ""
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "ifengine__choices-list"
+  }, choices.map((choice, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#",
-    onClick: e => {
-      e.preventDefault();
-    },
     key: index
-  }, choice)))));
+  }, choice)))))));
 }
 
 /***/ }),
@@ -394,7 +405,6 @@ class DynamicParagraph {
     this.conditionValue = parseInt(this.domElement.dataset.conditionvalue);
   }
   onEventRaised() {
-    console.log("getting event");
     this.updateVisibility();
   }
   updateVisibility() {
@@ -403,11 +413,6 @@ class DynamicParagraph {
       const conditionTargetElement = document.querySelector('#' + this.conditionTarget);
       if (conditionTargetElement) {
         const activeCondition = conditionTargetElement.dataset[this.ifEngine.ACTIVE_CONDITION_NAME];
-        console.log("updating");
-        console.log(this);
-        console.log(this.domElement);
-        console.log(conditionTargetElement);
-        console.log(activeCondition);
         if (parseInt(activeCondition) === this.conditionValue) {
           this.domElement.style.display = 'block';
         } else {
@@ -434,12 +439,9 @@ class DynamicParagraph {
     this.children.push(child);
   }
   hideChildren() {
-    console.log("hide children");
-    console.log(this);
     this.children.forEach(child => {
       if (child.displayStatusUpdated === false) {
         child.displayStatusUpdated = true;
-        console.log(child.domElement);
         child.domElement.style.display = 'none';
         child.hideChildren();
       }
@@ -450,7 +452,6 @@ class DynamicParagraph {
       // if(child.displayStatusUpdated === false) {
       child.displayStatusUpdated = true;
       child.domElement.setAttribute('data-activecondition', '');
-      console.log(child.domElement);
       child.resetActiveCondition();
       // }
     });

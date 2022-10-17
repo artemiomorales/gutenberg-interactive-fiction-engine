@@ -1,9 +1,14 @@
 .ifengine__container .ifengine__choices-list {
-	padding: 0;
+	padding-left: 0;
 }
 
 .ifengine__container ul li {
 	list-style-type: none;
+}
+
+.ifengine__choice > * {
+	margin-top: var(--global--spacing-vertical);
+    margin-bottom: var(--global--spacing-vertical);
 }
 
 .ifengine__editor-input-outer {

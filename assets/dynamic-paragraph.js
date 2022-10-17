@@ -1,27 +1,4 @@
-export const getModifiedArrayAttribute = ( attributes, attribute, targetIndex, newValue ) => {
-	return new Promise((resolve) => {
-		const originalArray = attributes[attribute];
-		let newArray = [...originalArray];
-		newArray[targetIndex] = newValue;
-		const attributeObject = {};
-		attributeObject[`${attribute}`] = newArray;
-		resolve(attributeObject);
-	})
- }
-
- export const getLengthenedArrayAttribute = ( attributes, attribute, newValue ) => {
-	return new Promise((resolve) => {
-		const originalArray = attributes[attribute];
-		let newArray = [...originalArray];
-		newArray.push(newValue);
-		const attributeObject = {};
-		attributeObject[`${attribute}`] = newArray;
-		resolve(attributeObject);
-	});
-}
-
-
-export class DynamicParagraph {
+class DynamicParagraph {
 	constructor(domElement, active = false) {
 		this.ifEngine = window.ifEngine;
 		this.domElement = domElement;
@@ -102,12 +79,3 @@ export class DynamicParagraph {
 	}
 
 }
-
-// window.ifEngine.dynamicParagraphs = [];
-// const dynamicParagraphElements = document.querySelectorAll(".adventurekit-dynamicparagraph");
-// dynamicParagraphElements.forEach((element) => {
-// 	console.log("paragraph");
-// 	console.log(element);
-// 	const dynamicParagraph = new DynamicParagraph(element);
-// 	window.ifEngine.registerListener(dynamicParagraph);
-// });

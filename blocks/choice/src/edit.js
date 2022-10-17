@@ -100,9 +100,7 @@ export default function Edit(props) {
 	}, []);
 
 	const callback = useCallback((element) => {
-		console.log("calling back");
 		if(!isMounted.current) {
-			console.log(element);
 			dynamicChoice.current = new DynamicParagraph(element);
 			window.ifEngine.registerListener(dynamicChoice.current);
 		} else {
@@ -116,6 +114,8 @@ export default function Edit(props) {
 
 	const updateChoice = (index) => {
 		console.log("registering click");
+		console.log(activeCondition);
+		console.log(index);
 		if(activeCondition !== index) {
 			setActiveCondition(index);
 			callSetActiveStatuses(index);
@@ -206,7 +206,7 @@ export default function Edit(props) {
 				</PanelBody>
 			</InspectorControls>
 			<div className='ifengine__container'>
-				<div id={id} ref={callback} data-displayconditionally={ parentId !== "" ? 1 : 0} data-conditiontarget={parentId} data-conditionvalue={condition} data-activecondition={activeCondition}>
+				<div id={id} className='ifengine__choice' ref={callback} data-displayconditionally={ parentId !== "" ? 1 : 0} data-conditiontarget={parentId} data-conditionvalue={condition} data-activecondition={activeCondition}>
 					<InnerBlocks />
 					<ul className='ifengine__choices-list'>
 						{
