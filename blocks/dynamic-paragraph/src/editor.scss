@@ -1,0 +1,30 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-dynamicparagraph {
+	border: 1px dotted #f00;
+}
+
+.adventurekit__editor-toggle {
+
+	margin-bottom: 20px;
+
+	.label {
+		margin-right: 5px;
+	}
+}
+
+.adventurekit__editor-number-input {
+
+	.label {
+		text-transform: uppercase;
+	}
+
+	.input {
+		width: 100%;
+	}
+
+}

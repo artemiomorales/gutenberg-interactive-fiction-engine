@@ -1,0 +1,22 @@
+{
+	"name": "interactive-fiction-engine",
+	"version": "0.1.0",
+	"description": "Example block scaffolded with Create Block tool.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start:choice": "wp-scripts start blocks/choice/src/index.js --output-path=blocks/choice/build/",
+		"build:choice": "wp-scripts build blocks/choice/src/index.js --output-path=blocks/choice/build/",
+		"start:dynamic-paragraph": "wp-scripts start blocks/dynamic-paragraph/src/index.js --output-path=blocks/dynamic-paragraph/build/",
+		"build:dynamic-paragraph": "wp-scripts build blocks/dynamic-paragraph/src/index.js --output-path=blocks/dynamic-paragraph/build/"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^24.3.0"
+	}
+}

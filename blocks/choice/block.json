@@ -1,0 +1,35 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "interactive-fiction-engine/choice",
+	"version": "0.1.0",
+	"title": "Choice - Guten",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Create choices.",
+	"attributes": {
+		"id": {
+			"type": "string",
+			"default": ""
+		},
+		"parentId": {
+			"type": "string",
+			"default": ""
+		},
+		"condition": {
+			"type": "integer",
+			"default": null
+		},
+		"choices": {
+			"type": "array",
+			"default": []
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "interactive-fiction-engine",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}

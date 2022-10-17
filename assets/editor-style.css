@@ -1,0 +1,35 @@
+.ifengine__container .ifengine__choices-list {
+	padding: 0;
+}
+
+.ifengine__container ul li {
+	list-style-type: none;
+}
+
+.ifengine__editor-input-outer {
+	text-align: center;
+}
+
+.ifengine__editor-input-inner {
+	text-align: left;
+	position: relative;
+}
+
+.ifengine__editor-input-inner .ifengine__editor-text-input {
+	margin-bottom: 0;
+}
+
+.ifengine__editor-input-inner .ifengine__editor-text-input .components-text-control__input {
+	margin-bottom: 5px;
+}
+
+.ifengine__editor-button {
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+.ifengine__editor-close-button {
+	position: absolute;
+	top: -10px;
+	right: -5px;
+}
