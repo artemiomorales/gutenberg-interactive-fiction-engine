@@ -11,30 +11,7 @@
     margin-bottom: var(--global--spacing-vertical);
 }
 
-.ifengine__editor-input-outer {
-	text-align: center;
-}
-
-.ifengine__editor-input-inner {
-	text-align: left;
-	position: relative;
-}
-
-.ifengine__editor-input-inner .ifengine__editor-text-input {
-	margin-bottom: 0;
-}
-
-.ifengine__editor-input-inner .ifengine__editor-text-input .components-text-control__input {
-	margin-bottom: 5px;
-}
-
-.ifengine__editor-button {
-	margin: 0 auto;
-	border: 1px solid black;
-}
-
-.ifengine__editor-close-button {
-	position: absolute;
-	top: -10px;
-	right: -5px;
+body .is-layout-constrained .ifengine__choice > * + * {
+	margin-block-start: calc(2 * var(--wp--custom--gap--baseline));
+    margin-block-end: 0;
 }
