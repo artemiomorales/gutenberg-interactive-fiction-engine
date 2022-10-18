@@ -11,10 +11,14 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InnerBlocks, useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
 
 // import { DynamicParagraph } from '../../../assets/interactive-fiction-engine';
-import { getModifiedArrayAttribute, getLengthenedArrayAttribute, registerComponent, unregisterComponent, DynamicParagraph } from '../../../lib/utils';
+import {
+	getModifiedArrayAttribute,
+	getLengthenedArrayAttribute,
+	DynamicParagraph
+} from '../../../lib/utils';
 
 import { subscribe } from '@wordpress/data';
 
@@ -22,9 +26,9 @@ import {
 	Button,
 	PanelBody,
 	FormToggle,
-	TextInput,
 	CheckboxControl,
-	TextControl
+	TextControl,
+	Placeholder
 } from "@wordpress/components";
 
 import { useState, useEffect, useCallback, useRef } from '@wordpress/element';
@@ -57,6 +61,7 @@ export default function Edit(props) {
 	 const isMounted = useRef(false);
 	 const dynamicChoice = useRef(null);
 	 const [debugView, setDebugView] = useState(window.ifEngine.debugView);
+	 const [validationError, setValidationError] = useState(false);
 
 	 const onChangeSimpleValue = (attribute, value) => {
 		const objectVal = {};
@@ -125,89 +130,126 @@ export default function Edit(props) {
 		}
 	}
 
+	const TEMPLATE = [ [ 'core/paragraph', {
+		placeholder: 'Type / to choose a block'
+	}, ] ] ;
+
+
+	const formHasErrors = () => {
+
+		if(parentId === '' && Number.isInteger(condition) === false) {
+			return false
+		}
+
+		if(parentId !== '' && Number.isInteger(condition)) {
+			return false
+		}
+
+		return true
+	}
+
+	const getConditionClassNames = () => {
+
+		console.log(parentId);
+		console.log(condition);
+
+
+	}
+
 	return (
 		<div { ...useBlockProps() }>
 			<InspectorControls>
-				<PanelBody title='Interactive Fiction Engine Logic'>
-					<TextControl
-						label={`Element ID`}
-						value={id}
-						onChange={(value) => {
-							setAttributes( { id: value })
-						}}
-					/>
-					<TextControl
-						label={`Parent ID`}
-						value={parentId}
-						onChange={(value) => {
-							setAttributes( { parentId: value })
-						}}
-					/>
-					<div className='ifengine__editor-number-input'>
-						<label className='label'>Condition</label>
-						<input type='number'
-							className='input'
-							value={`${condition}`}
-							onChange={(e) => {
-								setAttributes( { condition: parseInt(e.target.value) })
+				<div className='ifengine__editor-controls-container'>
+					<PanelBody title='Interactive Fiction Engine Logic'>
+						<TextControl
+							label={`Element ID`}
+							value={id}
+							onChange={(value) => {
+								setAttributes( { id: value })
 							}}
 						/>
-					</div>
-					<div className='ifengine__editor-toggle'>
-						<label className='label'>Debug View</label>
-						<FormToggle
-							checked={debugView}
-							onChange={() => {
-								window.ifEngine.debugView = !window.ifEngine.debugView;
+						{ formHasErrors() ?
+							<div className='error-text'>Please populate both fields to configure conditional display.</div>
+							:
+							''
+						}
+						<TextControl
+							label={`Parent ID`}
+							className={`${formHasErrors() ? 'error' : ''}`}
+							value={parentId}
+							onChange={(value) => {
+								setAttributes( { parentId: value })
 							}}
 						/>
-					</div>
-				</PanelBody>
-				<PanelBody title='Choices'>
-					<div className='ifengine__editor-input-outer'>
-						{
-							choices && choices.map( (choice, index) => {
-								return (
-									<div className='ifengine__editor-input-inner'>
-										<TextControl
-											label={`Option ${index}`}
-											className="ifengine__editor-text-input"
-											key={index}
-											value={choice}
-											onChange={(value) => {
-												getModifiedArrayAttribute(props.attributes, 'choices', index, value).then((attributeObject) => {
-													setAttributes(attributeObject);
-												})
-											}}
-										/>
-										<CheckboxControl
-											label='Active'
-											checked={ activeStatuses[index] }
-											onChange={ () => {
-												updateChoice(index);
-											}}
-										/>
-										<Button className='ifengine__editor-close-button' onClick={() => {removeChoice(index)}}>X</Button>
-									</div>
-								)
-							})
-						}
-						{
-							choices &&
-								<Button className='ifengine__editor-button' onClick={() => {
-									getLengthenedArrayAttribute(props.attributes, 'choices', '').then((attributeObject) => {
-										setAttributes( attributeObject );
-									});
-									addStatus()}}>
-									Add Choice
-								</Button>
-						}
-					</div>
-				</PanelBody>
+						<div className='ifengine__editor-input ifengine__editor-number-input'>
+							<label className='label'>Condition</label>
+							<input type='number'
+								className={`input ${formHasErrors() ? 'error' : ''}`}
+								value={condition}
+								onChange={(e) => {
+									setAttributes( { condition: parseInt(e.target.value) })
+								}}
+								min='0'
+							/>
+						</div>
+						<div className='ifengine__editor-input ifengine__editor-toggle'>
+							<label className='label' style={{display: 'inline-block', margin: '0 5px 2px 0'}}>Debug View</label>
+							<FormToggle
+								checked={debugView}
+								onChange={() => {
+									window.ifEngine.debugView = !window.ifEngine.debugView;
+								}}
+							/>
+						</div>
+					</PanelBody>
+					<PanelBody title='Choices'>
+						<div className='ifengine__editor-input-outer'>
+							{
+								choices && choices.map( (choice, index) => {
+									return (
+										<div className='ifengine__editor-input-inner'>
+											<TextControl
+												label={`Option ${index}`}
+												className="ifengine__editor-text-input"
+												key={index}
+												value={choice}
+												onChange={(value) => {
+													getModifiedArrayAttribute(props.attributes, 'choices', index, value).then((attributeObject) => {
+														setAttributes(attributeObject);
+													})
+												}}
+											/>
+											<CheckboxControl
+												label='Active'
+												checked={ activeStatuses[index] }
+												onChange={ () => {
+													updateChoice(index);
+												}}
+											/>
+											<Button className='ifengine__editor-close-button' onClick={() => {removeChoice(index)}}>X</Button>
+										</div>
+									)
+								})
+							}
+							{
+								choices &&
+									<Button className='ifengine__editor-button' onClick={() => {
+										getLengthenedArrayAttribute(props.attributes, 'choices', '').then((attributeObject) => {
+											setAttributes( attributeObject );
+										});
+										addStatus()}}>
+										Add Choice
+									</Button>
+							}
+						</div>
+					</PanelBody>
+				</div>
 			</InspectorControls>
-			<div className='ifengine__container'>
+			<div className='ifengine__container ifengine__editor-container'>
 				<div id={id} className='ifengine__choice' ref={callback} data-displayconditionally={ parentId !== "" ? 1 : 0} data-conditiontarget={parentId} data-conditionvalue={condition} data-activecondition={activeCondition}>
-					<InnerBlocks />
+					<InnerBlocks
+						template={TEMPLATE}
+					/>
 					<ul className='ifengine__choices-list'>
 						{
 							choices && choices.map( (choice, index) => {

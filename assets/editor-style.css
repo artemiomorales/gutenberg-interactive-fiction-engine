@@ -26,6 +26,37 @@
 	right: -5px;
 }
 
-body{
-	background: black !important;
+.ifengine__editor-input {
+	margin-bottom: 24px;
+}
+
+.ifengine__editor-controls-container .label {
+	font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: calc(4px * 2);
+    padding: 0;
+}
+
+.ifengine__editor-number-input .input {
+	width: 100%;
+}
+
+.ifengine__editor-number-input .input.error {
+	border-color: red;
+}
+
+.ifengine__editor-toggle {
+	margin-bottom: 24px;
+}
+
+.ifengine__editor-container {
+	min-height: 30px;
+}
+
+.ifengine__editor-controls-container .error-text {
+	color: red;
+	margin-bottom: 20px;
 }
