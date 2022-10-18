@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "interactive-fiction-engine/choice",
 	"version": "0.1.0",
-	"title": "Choice - Guten",
+	"title": "Interactive Fiction Engine - Choice",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "Create choices.",
