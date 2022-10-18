@@ -8,7 +8,7 @@ dynamicParagraphElements.forEach((element) => {
 	console.log(links);
 	links.forEach((link, index) => {
 		link.addEventListener('click', (e) => {
-			e.preventDefault();
+			// e.preventDefault();
 			console.log(dynamicParagraph.domElement.getAttribute('data-activecondition'));
 			if(parseInt(dynamicParagraph.domElement.getAttribute('data-activecondition')) !== index) {
 				dynamicParagraph.domElement.setAttribute('data-activecondition', index);

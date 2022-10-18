@@ -30,7 +30,7 @@ export default function save(props) {
 						{
 							choices.map((choice, index) =>
 								<li>
-									<a href="#" key={index}>{choice}</a>
+									<a href={`#${id}${index}`} key={index}>{choice}</a>
 								</li>
 							)
 						}
