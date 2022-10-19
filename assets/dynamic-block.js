@@ -1,4 +1,4 @@
-class DynamicParagraph {
+class DynamicBlock {
 	constructor(domElement, active = false) {
 		this.ifEngine = window.ifEngine;
 		this.domElement = domElement;
@@ -70,11 +70,8 @@ class DynamicParagraph {
 
 	resetActiveCondition() {
 		this.children.forEach((child) => {
-			// if(child.displayStatusUpdated === false) {
-				child.displayStatusUpdated = true;
-				child.domElement.setAttribute('data-activecondition', '');
-				child.resetActiveCondition();
-			// }
+			child.domElement.setAttribute('data-activecondition', '');
+			child.resetActiveCondition();
 		});
 	}
 
