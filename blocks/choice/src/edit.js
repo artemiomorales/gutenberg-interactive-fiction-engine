@@ -13,12 +13,14 @@ import { __ } from '@wordpress/i18n';
  */
 import { InnerBlocks, useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
 
-// import { DynamicParagraph } from '../../../assets/interactive-fiction-engine';
 import {
 	getModifiedArrayAttribute,
 	getLengthenedArrayAttribute,
-	DynamicParagraph
 } from '../../../lib/utils';
+
+import {
+	DynamicBlock
+} from '../../../lib/dynamicBlock';
 
 import { subscribe } from '@wordpress/data';
 
@@ -106,7 +108,7 @@ export default function Edit(props) {
 
 	const callback = useCallback((element) => {
 		if(!isMounted.current) {
-			dynamicChoice.current = new DynamicParagraph(element);
+			dynamicChoice.current = new DynamicBlock(element);
 			window.ifEngine.registerListener(dynamicChoice.current);
 		} else {
 			window.ifEngine.triggerUpdate(dynamicChoice.current);
