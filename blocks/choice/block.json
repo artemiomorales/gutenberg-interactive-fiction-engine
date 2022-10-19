@@ -6,7 +6,7 @@
 	"title": "Interactive Fiction Engine - Choice",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Create choices.",
+	"description": "Create rich content and conditionally hide or display other Choice blocks.",
 	"attributes": {
 		"id": {
 			"type": "string",
