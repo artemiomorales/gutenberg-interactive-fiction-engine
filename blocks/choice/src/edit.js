@@ -182,7 +182,7 @@ export default function Edit(props) {
 							}}
 						/>
 						<div className='ifengine__editor-input ifengine__editor-number-input'>
-							<label className='label'>Condition</label>
+							<label className='label'>Display on Parent Condition</label>
 							<input type='number'
 								className={`input ${formHasErrors() ? 'error' : ''}`}
 								value={condition}

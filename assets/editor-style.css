@@ -52,10 +52,6 @@
 	margin-bottom: 24px;
 }
 
-.ifengine__editor-container {
-	min-height: 30px;
-}
-
 .ifengine__editor-controls-container .error-text {
 	color: red;
 	margin-bottom: 20px;
