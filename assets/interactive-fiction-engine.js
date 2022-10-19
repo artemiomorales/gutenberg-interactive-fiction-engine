@@ -5,7 +5,6 @@ if(window.ifEngine) {
 class InteractiveFictionEngine {
 
 	constructor() {
-		// this.domElement = domElement;
 		this.listeners = [];
 		this.ACTIVE_CONDITION_NAME = 'activecondition';
 		this.debugView = false;
@@ -40,9 +39,7 @@ class InteractiveFictionEngine {
 
 		this.listeners.forEach((targetListener) => {
 			this.listeners.forEach((siblingListener) => {
-				// console.log(targetListener.domElement);
 				if(targetListener.domElement.getAttribute('id') === siblingListener.conditionTarget && siblingListener.conditionTarget !== "") {
-					// console.log('in the loop');
 					targetListener.addChild(siblingListener);
 				}
 			})
@@ -55,10 +52,6 @@ class InteractiveFictionEngine {
 				listener.onEventRaised();
 			}
 		});
-
-		// sourceListener.children.forEach((listener) => {
-		// 	listener.hideChildren();
-		// });
 	}
 
 }
