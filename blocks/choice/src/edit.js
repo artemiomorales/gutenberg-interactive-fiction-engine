@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InnerBlocks, useBlockProps, InspectorControls, RichText } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps, InspectorControls } from '@wordpress/block-editor';
 
 import {
 	getModifiedArrayAttribute,
@@ -63,19 +63,11 @@ export default function Edit(props) {
 	 const isMounted = useRef(false);
 	 const dynamicChoice = useRef(null);
 	 const [debugView, setDebugView] = useState(window.ifEngine.debugView);
-	 const [validationError, setValidationError] = useState(false);
-
-	 const onChangeSimpleValue = (attribute, value) => {
-		const objectVal = {};
-		objectVal[`${attribute}`] = value;
-		setAttributes(objectVal);
-	 }
 
 	const addStatus = () => {
 		let newArray = [...activeStatuses];
 		newArray.push(false);
 		setActiveStatuses(newArray);
-		console.log(activeStatuses);
 	}
 
 	const callSetActiveStatuses = (indexToActivate) => {
@@ -100,10 +92,6 @@ export default function Edit(props) {
 			let defaultActiveStatuses = choices.map(() => false);
 			setActiveStatuses(defaultActiveStatuses);
 		}
-		// Doesn't work
-		// return() => {
-		// 	console.log("I am being removed");
-		// }
 	}, []);
 
 	const callback = useCallback((element) => {
@@ -120,9 +108,6 @@ export default function Edit(props) {
 	});
 
 	const updateChoice = (index) => {
-		console.log("registering click");
-		console.log(activeCondition);
-		console.log(index);
 		if(activeCondition !== index) {
 			setActiveCondition(index);
 			callSetActiveStatuses(index);
@@ -148,14 +133,6 @@ export default function Edit(props) {
 		}
 
 		return true
-	}
-
-	const getConditionClassNames = () => {
-
-		console.log(parentId);
-		console.log(condition);
-
-
 	}
 
 	return (
