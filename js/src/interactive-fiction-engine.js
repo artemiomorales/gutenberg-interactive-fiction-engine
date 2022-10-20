@@ -1,8 +1,9 @@
+export const ACTIVE_CONDITION_NAME = 'activecondition';
+
 export default class InteractiveFictionEngine {
 
 	constructor() {
 		this.listeners = [];
-		this.ACTIVE_CONDITION_NAME = 'activecondition';
 		this.debugView = false;
 	}
 

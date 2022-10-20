@@ -1,3 +1,5 @@
+import { ACTIVE_CONDITION_NAME } from "./interactive-fiction-engine";
+
 export default class DynamicBlock {
 
 	constructor(domElement, active = false) {
@@ -27,7 +29,7 @@ export default class DynamicBlock {
 		if(this.displayConditionally && this.conditionTarget !== "" && !this.forceShow) {
 			const conditionTargetElement = document.querySelector('#'+this.conditionTarget);
 			if(conditionTargetElement) {
-				const activeCondition = conditionTargetElement.dataset[this.ifEngine.ACTIVE_CONDITION_NAME];
+				const activeCondition = conditionTargetElement.dataset[ACTIVE_CONDITION_NAME];
 				if(parseInt(activeCondition) === this.conditionValue) {
 					this.domElement.style.display = 'block';
 				} else {
@@ -71,7 +73,7 @@ export default class DynamicBlock {
 
 	resetActiveCondition() {
 		this.children.forEach((child) => {
-			child.domElement.setAttribute(`data-${this.ifEngine.ACTIVE_CONDITION_NAME}`, '');
+			child.domElement.setAttribute(`data-${ACTIVE_CONDITION_NAME}`, '');
 			child.resetActiveCondition();
 		});
 	}

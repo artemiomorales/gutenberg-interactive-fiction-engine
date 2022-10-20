@@ -6,6 +6,8 @@
  */
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
+import { CHOICE_NAME } from '../../../js/src';
+
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -24,7 +26,7 @@ export default function save(props) {
 	return (
 		<div { ...useBlockProps.save() }>
 			<div className='ifengine__container'>
-				<div id={id} className='ifengine__choice' data-displayconditionally={ parentId !== "" ? 1 : 0} data-conditiontarget={parentId} data-conditionvalue={condition} data-activecondition="">
+				<div id={id} className={CHOICE_NAME} data-displayconditionally={ parentId !== "" ? 1 : 0} data-conditiontarget={parentId} data-conditionvalue={condition} data-activecondition="">
 					<InnerBlocks.Content />
 					<ul className='ifengine__choices-list'>
 						{

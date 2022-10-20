@@ -20,6 +20,8 @@ import {
 
 import DynamicBlock from '../../../js/src/dynamic-block';
 
+import { CHOICE_NAME } from '../../../js/src';
+
 import { subscribe } from '@wordpress/data';
 
 import {
@@ -225,7 +227,7 @@ export default function Edit(props) {
 				</div>
 			</InspectorControls>
 			<div className='ifengine__container ifengine__editor-container'>
-				<div id={id} className='ifengine__choice' ref={callback} data-displayconditionally={ parentId !== "" ? 1 : 0} data-conditiontarget={parentId} data-conditionvalue={condition} data-activecondition={activeCondition}>
+				<div id={id} className={CHOICE_NAME} ref={callback} data-displayconditionally={ parentId !== "" ? 1 : 0} data-conditiontarget={parentId} data-conditionvalue={condition} data-activecondition={activeCondition}>
 					<InnerBlocks
 						template={TEMPLATE}
 					/>
