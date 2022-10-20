@@ -1,6 +1,6 @@
 # Gutenberg Interactive Fiction Engine
 
-This plugin is an early attempt at providing blocks and scripts to suppor the creation of interactive fiction in Gutenberg.
+This plugin is an early attempt at providing blocks and scripts to support the creation of interactive fiction in Gutenberg.
 
 ## Installation
 
