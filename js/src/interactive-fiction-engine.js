@@ -42,7 +42,7 @@ export default class InteractiveFictionEngine {
 			})
 		});
 
-		sourceListener.resetActiveCondition();
+		sourceListener.resetChildrenActiveCondition();
 
 		this.listeners.forEach((listener) => {
 			if(listener.onEventRaised) {

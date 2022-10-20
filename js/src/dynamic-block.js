@@ -71,10 +71,10 @@ export default class DynamicBlock {
 		});
 	}
 
-	resetActiveCondition() {
+	resetChildrenActiveCondition() {
 		this.children.forEach((child) => {
 			child.domElement.setAttribute(`data-${ACTIVE_CONDITION_NAME}`, '');
-			child.resetActiveCondition();
+			child.resetChildrenActiveCondition();
 		});
 	}
 
