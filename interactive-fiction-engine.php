@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Interactive Fiction Engine
- * Description:       Example block scaffolded with Create Block tool.
+ * Description:       Blocks and scripts to support the creation of interactive fiction using Gutenberg.
  * Requires at least: 5.9
  * Requires PHP:      7.0
  * Version:           0.1.0
