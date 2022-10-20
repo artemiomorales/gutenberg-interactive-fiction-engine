@@ -13,8 +13,8 @@
 		"plugin-zip": "wp-scripts plugin-zip",
 		"start:choice": "wp-scripts start blocks/choice/src/index.js --output-path=blocks/choice/build/",
 		"build:choice": "wp-scripts build blocks/choice/src/index.js --output-path=blocks/choice/build/",
-		"start:dynamic-paragraph": "wp-scripts start blocks/dynamic-paragraph/src/index.js --output-path=blocks/dynamic-paragraph/build/",
-		"build:dynamic-paragraph": "wp-scripts build blocks/dynamic-paragraph/src/index.js --output-path=blocks/dynamic-paragraph/build/"
+		"start:js": "wp-scripts start js/src/index.js --output-path=js/build/",
+		"build:js": "wp-scripts build js/src/index.js --output-path=js/build/"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^24.3.0"

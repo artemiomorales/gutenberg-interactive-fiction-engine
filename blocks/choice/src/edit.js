@@ -16,11 +16,9 @@ import { InnerBlocks, useBlockProps, InspectorControls } from '@wordpress/block-
 import {
 	getModifiedArrayAttribute,
 	getLengthenedArrayAttribute,
-} from '../../../lib/utils';
+} from '../../lib/utils';
 
-import {
-	DynamicBlock
-} from '../../../lib/dynamicBlock';
+import DynamicBlock from '../../../js/src/dynamic-block';
 
 import { subscribe } from '@wordpress/data';
 
@@ -63,6 +61,8 @@ export default function Edit(props) {
 	 const isMounted = useRef(false);
 	 const dynamicChoice = useRef(null);
 	 const [debugView, setDebugView] = useState(window.ifEngine.debugView);
+
+	 console.log(DynamicBlock);
 
 	const addStatus = () => {
 		let newArray = [...activeStatuses];

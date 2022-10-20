@@ -1,8 +1,4 @@
-if(window.ifEngine) {
-	console.log("Error! You have multiple instances of Adventure Kit installed. Blocks may not function as expected.");
-}
-
-class InteractiveFictionEngine {
+export default class InteractiveFictionEngine {
 
 	constructor() {
 		this.listeners = [];
@@ -55,6 +51,3 @@ class InteractiveFictionEngine {
 	}
 
 }
-
-window.ifEngine = new InteractiveFictionEngine();
-// window.ifEngine = new InteractiveFictionEngine(document.querySelector('#ifEngineElement'));

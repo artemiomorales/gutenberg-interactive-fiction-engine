@@ -1,4 +1,5 @@
-class DynamicBlock {
+export default class DynamicBlock {
+
 	constructor(domElement, active = false) {
 		this.ifEngine = window.ifEngine;
 		this.domElement = domElement;

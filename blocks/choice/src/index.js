@@ -14,12 +14,16 @@ import { registerBlockType } from '@wordpress/blocks';
  */
 import './style.scss';
 
+import InteractiveFictionEngine from '../../../js/src/interactive-fiction-engine';
+
 /**
  * Internal dependencies
  */
 import edit from './edit';
 import save from './save';
 import metadata from '../block.json';
+
+window.ifEngine = new InteractiveFictionEngine();
 
 /**
  * Every block starts by registering a new block type definition.
