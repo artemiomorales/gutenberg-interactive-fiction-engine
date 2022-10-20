@@ -71,7 +71,7 @@ export default class DynamicBlock {
 
 	resetActiveCondition() {
 		this.children.forEach((child) => {
-			child.domElement.setAttribute('data-activecondition', '');
+			child.domElement.setAttribute(`data-${this.ifEngine.ACTIVE_CONDITION_NAME}`, '');
 			child.resetActiveCondition();
 		});
 	}
