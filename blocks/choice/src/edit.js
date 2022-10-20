@@ -29,8 +29,7 @@ import {
 	PanelBody,
 	FormToggle,
 	CheckboxControl,
-	TextControl,
-	Placeholder
+	TextControl
 } from "@wordpress/components";
 
 import { useState, useEffect, useCallback, useRef } from '@wordpress/element';
