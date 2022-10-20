@@ -64,8 +64,6 @@ export default function Edit(props) {
 	 const dynamicChoice = useRef(null);
 	 const [debugView, setDebugView] = useState(window.ifEngine.debugView);
 
-	 console.log(DynamicBlock);
-
 	const addStatus = () => {
 		let newArray = [...activeStatuses];
 		newArray.push(false);

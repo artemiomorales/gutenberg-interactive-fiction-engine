@@ -53,22 +53,8 @@ export default class DynamicBlock {
 		this.children = [];
 	}
 
-	resetDisplayStatus() {
-		this.displayStatusUpdated = false;
-	}
-
 	addChild(child) {
 		this.children.push(child);
-	}
-
-	hideChildren() {
-		this.children.forEach((child) => {
-			if(child.displayStatusUpdated === false) {
-				child.displayStatusUpdated = true;
-				child.domElement.style.display = 'none';
-				child.hideChildren();
-			}
-		});
 	}
 
 	resetChildrenActiveCondition() {

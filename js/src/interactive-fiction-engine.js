@@ -30,7 +30,6 @@ export default class InteractiveFictionEngine {
 
 	triggerUpdate(sourceListener) {
 		this.listeners.forEach((targetListener) => {
-			targetListener.resetDisplayStatus();
 			targetListener.resetChildren();
 		});
 
