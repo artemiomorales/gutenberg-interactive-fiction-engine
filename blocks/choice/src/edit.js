@@ -176,7 +176,7 @@ export default function Edit(props) {
 							<FormToggle
 								checked={debugView}
 								onChange={() => {
-									window.ifEngine.debugView = !window.ifEngine.debugView;
+									window.ifEngine.setEngineDebugView(!window.ifEngine.debugView);
 								}}
 							/>
 						</div>

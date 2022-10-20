@@ -7,13 +7,9 @@ export default class InteractiveFictionEngine {
 		this.debugView = false;
 	}
 
-	get debugView() {
-		return this._debugView;
-	}
-
-	set debugView(targetValue) {
-		this._debugView = targetValue;
-		if(targetValue === true) {
+	setEngineDebugView(targetStatus) {
+		this.debugView = targetStatus;
+		if(targetStatus === true) {
 			this.listeners.forEach((listener) => {
 				listener.activateForceShow();
 			});
