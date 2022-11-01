@@ -1,6 +1,6 @@
 {
 	"name": "interactive-fiction-engine",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Blocks and scripts to support the creation of interactive fiction using Gutenberg.",
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
