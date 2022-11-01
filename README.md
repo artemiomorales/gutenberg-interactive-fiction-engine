@@ -12,9 +12,17 @@ You can also build the plugin yourself using the Development instructions below.
 
 Populate a Choice block with content, then use the block settings to configure its `Element ID` and `Choices`.
 
-Create additional Choice blocks, configuring their `Parent ID` and `Condition` to match the information of block their dependent on.
+Create additional Choice blocks, configuring their `Parent ID` and `Condition` to match the information of block they're dependent on.
 
 Note: `Condition` starts at index 0.
+
+[Find a demo and short walkthrough here](https://artemiosans.com/2022/10/20/introducing-the-gutenberg-interactive-fiction-engine/).
+
+## Bugs and Questions
+
+Please use the [Github issue tracker](https://github.com/artemiomorales/gutenberg-interactive-fiction-engine/issues) to catalog bugs and suggestions for improvement.
+
+If you have any questions, you can [find me on Twitter](https://twitter.com/artemiosans).
 
 ## Development
 
