@@ -2,6 +2,7 @@ import InteractiveFictionEngine, { ACTIVE_CONDITION_NAME } from './interactive-f
 import DynamicBlock from './dynamic-block';
 
 export const CHOICE_NAME = 'ifengine__choice';
+export const CHOICE_LIST_NAME = 'ifengine__choices-list';
 
 window.ifEngine = new InteractiveFictionEngine();
 window.ifEngine.dynamicBlocks = [];
@@ -9,7 +10,7 @@ const dynamicBlockElements = document.querySelectorAll(`.${CHOICE_NAME}`);
 dynamicBlockElements.forEach((element) => {
 	const dynamicBlock = new DynamicBlock(element);
 	window.ifEngine.registerListener(dynamicBlock);
-	const links = dynamicBlock.domElement.querySelectorAll('a');
+	const links = dynamicBlock.domElement.querySelector(`.${CHOICE_LIST_NAME}`).querySelectorAll('a');
 	const activeAttributeName = `data-${ACTIVE_CONDITION_NAME}`;
 	links.forEach((link, index) => {
 		link.addEventListener('click', (e) => {

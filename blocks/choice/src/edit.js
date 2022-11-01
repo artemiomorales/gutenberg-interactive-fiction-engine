@@ -20,7 +20,7 @@ import {
 
 import DynamicBlock from '../../../js/src/dynamic-block';
 
-import { CHOICE_NAME } from '../../../js/src';
+import { CHOICE_NAME, CHOICE_LIST_NAME } from '../../../js/src';
 
 import { subscribe } from '@wordpress/data';
 
@@ -228,7 +228,7 @@ export default function Edit(props) {
 					<InnerBlocks
 						template={TEMPLATE}
 					/>
-					<ul className='ifengine__choices-list'>
+					<ul className={CHOICE_LIST_NAME}>
 						{
 							choices && choices.map( (choice, index) => {
 								return (
